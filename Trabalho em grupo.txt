@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+// Função para converter volume
+void converterVolume(double valor, int opcaoOrigem, int opcaoDestino) {
+    double resultado = valor;
+
+    // Converte a unidade de origem para Litros
+    if (opcaoOrigem == 1) { // Mililitros para Litros
+        resultado = valor / 1000.0;
+    } else if (opcaoOrigem == 3) { // Metros cúbicos para Litros
+        resultado = valor * 1000.0;
+    }
+
+    // Converte de Litros para a unidade de destino
+    if (opcaoDestino == 1) { // Litros para Mililitros
+        resultado = resultado * 1000.0;
+    } else if (opcaoDestino == 3) { // Litros para Metros cúbicos
+        resultado = resultado / 1000.0;
+    }
+
+    printf("Resultado: %.2lf\n", resultado);
+}
+
+int main() {
+    int opcaoOrigem, opcaoDestino;
+    double valor;
+
+    printf("### Conversor de Unidades de Volume ###\n");
+    printf("Escolha a unidade de origem:\n");
+    printf("1 - Mililitros (mL)\n");
+    printf("2 - Litros (L)\n");
+    printf("3 - Metros cúbicos (m³)\n");
+    scanf("%d", &opcaoOrigem);
+
+    printf("Escolha a unidade de destino:\n");
+    printf("1 - Mililitros (mL)\n");
+    printf("2 - Litros (L)\n");
+    printf("3 - Metros cúbicos (m³)\n");
+    scanf("%d", &opcaoDestino);
+
+    printf("Digite o valor a ser convertido: ");
+    scanf("%lf", &valor);
+
+    converterVolume(valor, opcaoOrigem, opcaoDestino);
+
+    return 0;
+}
